@@ -1,0 +1,5 @@
+0.008
+perl(HTTP::Date)
+perl(Test::Deep)
+perl(Test::Requires)
+perl(URI)
