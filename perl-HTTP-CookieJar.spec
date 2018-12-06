@@ -4,7 +4,7 @@
 #
 Name     : perl-HTTP-CookieJar
 Version  : 0.008
-Release  : 7
+Release  : 8
 URL      : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/HTTP-CookieJar-0.008.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/HTTP-CookieJar-0.008.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libh/libhttp-cookiejar-perl/libhttp-cookiejar-perl_0.008-1.debian.tar.xz
@@ -46,7 +46,7 @@ license components for the perl-HTTP-CookieJar package.
 cd ..
 %setup -q -T -D -n HTTP-CookieJar-0.008 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/HTTP-CookieJar-0.008/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/HTTP-CookieJar-0.008/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
