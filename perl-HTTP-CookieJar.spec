@@ -4,7 +4,7 @@
 #
 Name     : perl-HTTP-CookieJar
 Version  : 0.008
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/HTTP-CookieJar-0.008.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/HTTP-CookieJar-0.008.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libh/libhttp-cookiejar-perl/libhttp-cookiejar-perl_0.008-1.debian.tar.xz
@@ -12,6 +12,7 @@ Summary  : 'A minimalist HTTP user agent cookie jar'
 Group    : Development/Tools
 License  : Apache-2.0 GPL-2.0 MIT
 Requires: perl-HTTP-CookieJar-license = %{version}-%{release}
+Requires: perl-HTTP-CookieJar-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(HTTP::Date)
 BuildRequires : perl(Test::Deep)
@@ -28,6 +29,7 @@ version 0.008
 Summary: dev components for the perl-HTTP-CookieJar package.
 Group: Development
 Provides: perl-HTTP-CookieJar-devel = %{version}-%{release}
+Requires: perl-HTTP-CookieJar = %{version}-%{release}
 
 %description dev
 dev components for the perl-HTTP-CookieJar package.
@@ -41,18 +43,28 @@ Group: Default
 license components for the perl-HTTP-CookieJar package.
 
 
+%package perl
+Summary: perl components for the perl-HTTP-CookieJar package.
+Group: Default
+Requires: perl-HTTP-CookieJar = %{version}-%{release}
+
+%description perl
+perl components for the perl-HTTP-CookieJar package.
+
+
 %prep
 %setup -q -n HTTP-CookieJar-0.008
-cd ..
-%setup -q -T -D -n HTTP-CookieJar-0.008 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libhttp-cookiejar-perl_0.008-1.debian.tar.xz
+cd %{_builddir}/HTTP-CookieJar-0.008
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/HTTP-CookieJar-0.008/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/HTTP-CookieJar-0.008/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -62,7 +74,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -71,8 +83,8 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-HTTP-CookieJar
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-HTTP-CookieJar/LICENSE
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-HTTP-CookieJar/deblicense_copyright
+cp %{_builddir}/HTTP-CookieJar-0.008/LICENSE %{buildroot}/usr/share/package-licenses/perl-HTTP-CookieJar/e188c4892bc1fbfced62c2299a2a24fd21098d81
+cp %{_builddir}/HTTP-CookieJar-0.008/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-HTTP-CookieJar/fd6bfa7ce6e209c152c6304916a7bf6f05be81d1
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -85,8 +97,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/HTTP/CookieJar.pm
-/usr/lib/perl5/vendor_perl/5.28.2/HTTP/CookieJar/LWP.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -95,5 +105,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-HTTP-CookieJar/LICENSE
-/usr/share/package-licenses/perl-HTTP-CookieJar/deblicense_copyright
+/usr/share/package-licenses/perl-HTTP-CookieJar/e188c4892bc1fbfced62c2299a2a24fd21098d81
+/usr/share/package-licenses/perl-HTTP-CookieJar/fd6bfa7ce6e209c152c6304916a7bf6f05be81d1
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/HTTP/CookieJar.pm
+/usr/lib/perl5/vendor_perl/5.30.1/HTTP/CookieJar/LWP.pm
