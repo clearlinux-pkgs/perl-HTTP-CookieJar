@@ -4,7 +4,7 @@
 #
 Name     : perl-HTTP-CookieJar
 Version  : 0.008
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/HTTP-CookieJar-0.008.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/HTTP-CookieJar-0.008.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libh/libhttp-cookiejar-perl/libhttp-cookiejar-perl_0.008-1.debian.tar.xz
@@ -84,7 +84,7 @@ make TEST_VERBOSE=1 test
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-HTTP-CookieJar
 cp %{_builddir}/HTTP-CookieJar-0.008/LICENSE %{buildroot}/usr/share/package-licenses/perl-HTTP-CookieJar/e188c4892bc1fbfced62c2299a2a24fd21098d81
-cp %{_builddir}/HTTP-CookieJar-0.008/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-HTTP-CookieJar/fd6bfa7ce6e209c152c6304916a7bf6f05be81d1
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-HTTP-CookieJar/fd6bfa7ce6e209c152c6304916a7bf6f05be81d1
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -110,5 +110,5 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/HTTP/CookieJar.pm
-/usr/lib/perl5/vendor_perl/5.30.1/HTTP/CookieJar/LWP.pm
+/usr/lib/perl5/vendor_perl/5.30.2/HTTP/CookieJar.pm
+/usr/lib/perl5/vendor_perl/5.30.2/HTTP/CookieJar/LWP.pm
