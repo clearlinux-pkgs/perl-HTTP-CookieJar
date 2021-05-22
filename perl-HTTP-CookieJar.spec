@@ -4,7 +4,7 @@
 #
 Name     : perl-HTTP-CookieJar
 Version  : 0.010
-Release  : 17
+Release  : 18
 URL      : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/HTTP-CookieJar-0.010.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/HTTP-CookieJar-0.010.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libh/libhttp-cookiejar-perl/libhttp-cookiejar-perl_0.008-1.debian.tar.xz
