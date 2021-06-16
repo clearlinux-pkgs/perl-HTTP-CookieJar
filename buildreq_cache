@@ -1,4 +1,4 @@
-0.010
+0.012
 perl(HTTP::Date)
 perl(Test::Deep)
 perl(Test::Requires)
