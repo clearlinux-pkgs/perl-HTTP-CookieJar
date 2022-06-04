@@ -4,7 +4,7 @@
 #
 Name     : perl-HTTP-CookieJar
 Version  : 0.012
-Release  : 23
+Release  : 24
 URL      : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/HTTP-CookieJar-0.012.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/HTTP-CookieJar-0.012.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libh/libhttp-cookiejar-perl/libhttp-cookiejar-perl_0.008-1.debian.tar.xz
@@ -110,5 +110,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/HTTP/CookieJar.pm
-/usr/lib/perl5/vendor_perl/5.34.0/HTTP/CookieJar/LWP.pm
+/usr/lib/perl5/*
